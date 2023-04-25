@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="dziennik praktyk" />
+    <meta name="description" content="" />
+    <meta name="author" content="Andrzej Machnik" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-Ua-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+    <title>Dziennik praktyk</title>
+  </head>
+    <body>
+        <div id="page">
+            <header>
+                <h1>Dziennik praktyki zawodowej</h1>
+                <nav>
+                    <ul>
+                        <li><button id="infoBtn">Dane praktykanta</button></li>
+                        <li><button id="journalBtn">Dziennik zajęć</button></li>
+                        <li><button id="summaryBtn">Podsumowanie</button></li>
+                    </ul>
+                </nav>
+            </header>
+            <main>
+                <section id="data">
+                    <form id="info-input" action="#">
+                        <fieldset>
+                            <legend><h3>Dane praktykanta:</h3></legend>
+                            <label for="fname">Imię: <input type="text" name="fname" id="fname" required></label>
+                            <label for="lname">Nazwisko: <input type="text" name="lname" id="lname" required></label><br><br>
+                            <label for="class">Klasa:</label>
+                            <select name="class" id="class">
+                                <option value="3EI">3EI</option>
+                                <option value="3I">3I</option>
+                                <option value="3P">3P</option>
+                                <option value="4EI">4EI</option>
+                                <option value="4I">4I</option>
+                                <option value="4P">4P</option>
+                            </select>
+                            <label for="year">Rok szkolny:</label>
+                            <select name="year" id="year">
+                                <option value="2022/23">2022/2023</option>
+                            </select><br><br>
+                            <label for="metor">Imię i nazwisko opiekuna: <input type="text" name="mentor" id="mentor" required></label><br><br>
+                            <label for="place">Miejsce odbycia praktyki: <input type="text" name="place" id="place" required></label>
+                            <fieldset>
+                                <legend><h4>Czas trwania praktyk</h4></legend>
+                                <label for="start-date">Data rozpoczęcia:<input type="date" name="start-date" id="start-date" required></label>
+                                <label for="end-date">Data zakończenia:<input type="date" name="end-date" id="end-date" required></label>
+                                <p id="time-between-error"></p>
+                            </fieldset><br><br>
+                            <input type="submit" value="Zatwierdź">
+                        </fieldset>
+                    </form>
+                    <section id="info-output" style="display:none;">
+                        <button id="editBtn">Edytuj</button>
+                    </section>
+                </section>
+                <section id="journal" style="display:none;">
+                    <header>
+                        <h3>Dziennik zajęć</h3>
+                        <nav>
+                            <ul>
+                                <li><button id="addTopicBtn">Wprowadź nowe zajęcia</button></li>
+                                <li><button id="realizedTopicsBtn">Zrealizowane tematy</button></li>
+                                <li><button id="topicsListBtn">Lista tematów</button></li>
+                            </ul>
+                        </nav>
+                    </header>
+                    <section id="add-new-topic" style="display:none;">
+                        <h4>Wprowadź nowe zajęcia:</h4>
+                        <form id="add-topic-input" action="#">
+                            <fieldset>
+                                <legend><h4>Informacja o zajęciach</h4></legend>
+                                <label for="day-of-lesson">Wybierz datę zajęć:
+                                    <input type="date" name="day-of-lesson" id="day-of-lesson" oninput="validateWeekday()" required>
+                                    <span id="weekday-error"></span>
+                                </label><br><br>
+                                <label for="topics">Wybierz temat: </label>
+                                <select id="topics"></select><br><br>
+                                <label for="teacher">Nauczyciel (domyślnie opiekun praktyki): <input type="text" name="teacher" id="teacher" required></label>
+                            </fieldset><br><br>
+                            <fieldset>
+                                <legend><h4>Realizacja materiału</h4></legend>
+                                <label for="report">Sprawozdanie:</label><br>
+                                <textarea id="report" rows="15" cols="60" required></textarea>
+                                <label for="is-completed">Zrealizowano w całości: <input type="checkbox" name="is-completed" id="is-completed"></label><br><br>
+                                <label for="hours">Ile godzin: <input type="number" name="hours" id="hours" min="1" max="7" required></label>
+                                <label for="grade">Stopień opanowania materiału: 1<input type="range" name="grade" id="grade" min="1" max="6" value="3" required>6</label>
+                            </fieldset><br><br>
+                            <input type="reset" value="Wyczyść">
+                            <input type="submit" value="Dodaj">
+                        </form>
+                    </section>
+                    <section id="realized-topics" style="display:none;">
+                        <h4>Zrealizowane tematy:</h4>
+                    </section>
+                    <section id="topics-list" style="display:none;">
+                        <h4>Lista tematów i stan realizacji:</h4>
+                    </section>
+                </section>
+                <section id="summary" style="display:none;">
+                    <h4>Podsumowanie:</h4>
+                    <section id="summary-input">
+                        <label for="opinion">Opinia:</label>
+                        <textarea id="opinion" rows="20" cols="100" disabled></textarea>
+                        <br><br>
+                        <table>
+                            <tr><th>Nazwa modułu</th><th>Ilość godzin</th></tr>
+                            
+                        </table>
+                        <p></p>
+                        <label for="proposed-grade">Proponowana ocena: 1<input type="range" name="proposed-grade" id="proposed-grade" min="1" max="6" value="3" disabled>6</label>
+                        <button id="summarySubmitBtn" disabled>Zapisz ocenę</button>
+                    </section>
+                    <section id="summary-output" style="display:none;">
+                        <article></article>
+                    </section>
+                </section>
+            </main>
+            <footer>
+                <h4>&copy; Debian Machnikov 2023</h4>
+            </footer>
+        </div>
+    </body>
+</html>

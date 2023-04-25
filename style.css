@@ -1,0 +1,120 @@
+:root {
+  /*
+  --primaryBgColor: dodgerblue;
+  --secondaryBgColor: azure;
+  --tertiaryBgColor: skyblue;
+  --buttonBgColor: deepskyblue;
+  --primaryFgColor: black;
+  --secondaryFgColor: red;
+  */
+  --primaryBgColor: #222222;
+  --secondaryBgColor: #404040;
+  --tertiaryBgColor: #171717;
+  --buttonBgColor: #ffc000;
+  --buttonFgColor: #333333;
+  --primaryFgColor: #ffc000;
+  --secondaryFgColor: #d9d9d9;
+  --errorColor: #ff2400;
+  --infoColor: #00ff24;
+}
+
+body {
+  background-color: var(--tertiaryBgColor);
+}
+
+#page {
+  width: 1000px;
+  height:100%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  font-family: Arial, Helvetica, sans-serif;
+  color:var(--secondaryFgColor);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primaryFgColor);
+}
+
+header {
+  text-align: center;
+  
+  font-size: 20px;
+  background-color: var(--primaryBgColor);
+  padding-top: 30px;
+  height: 200px;
+}
+
+header > nav > ul {
+  list-style-type: none;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+input, textarea {
+  background-color: var(--secondaryFgColor);
+  color:var(--buttonFgColor);
+}
+
+input:focus, textarea:focus {
+  outline:var(--primaryFgColor);
+  box-shadow:0px 0px 4px 2px var(--primaryFgColor);
+  border:1px solid var(--primaryFgColor);
+}
+
+button, input[type="submit"], input[type="reset"] {
+  text-decoration: none;
+  background-color: var(--buttonBgColor);
+  border: 1px solid var(--buttonBgColor);
+  color:(--buttonFgColor);
+  border-radius:10px;
+}
+
+button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+  box-shadow: 0px 0px 10px 2px var(--primaryFgColor);
+}
+
+header > nav > ul > li > button {
+  height: 50px;
+  width: 200px;
+  line-height: 50px;
+}
+
+main {
+  background-color: var(--secondaryBgColor);
+  height: auto;
+  padding: 50px;
+}
+
+main > #journal > #realized-topics > section {
+  border-bottom:1px solid var(--primaryFgColor);
+}
+
+#time-between-error, #weekday-error {
+  color: var(--errorColor);
+}
+
+.info {
+  color: var(--infoColor);
+}
+
+fieldset {
+  border: 1px solid var(--primaryFgColor);
+}
+
+table {
+  margin:20px 0;
+}
+
+table, th, td {
+  border: 1px solid var(--primaryFgColor);
+  border-collapse:collapse;
+}
+
+footer {
+  background-color: var(--primaryBgColor);
+  height: 50px;
+  padding: 20px;
+  text-align: center;
+}
